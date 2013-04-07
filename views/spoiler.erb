@@ -1,0 +1,27 @@
+<div class="row">
+
+    <div class="span6 well well-large">
+        <h3>Spoiler for <%=@for%></h3>
+
+        <p class="spoiler">
+            <%=@spoiler%>
+        </p>
+
+        <p>
+            <small class="muted">Created at: <%=@created_at%>.</small>
+        </p>
+    </div>
+
+    <div class='span3 well well-large'>
+        <h3>Created By:</h3>
+
+        <img class="img-polaroid pull-left user-pic" src="<%=@picture%>"/>
+        
+        <div>
+            <strong><%=@name%></strong><br/>
+            <a href="https://twitter.com/<%=@username%>">@<%=@username%></a>
+        </div>
+    </div>
+
+
+</div>

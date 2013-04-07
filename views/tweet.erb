@@ -6,14 +6,16 @@
 
         <form method="post">
             <fieldset>
+                <label for="for">This is a spoiler for:</label>
+                <input type="text" id="for" name="for" placeholder="Harry Potter"/>
                 <label for="spoiler">Hidden Spoiler:</label>
-                <textarea id="spoiler" name="spoiler" rows="4" class="field span6"></textarea>
-                <small class="help-block muted">This part will be hidden.</small>
+                <textarea id="spoiler" name="spoiler" rows="4" class="field span6" placeholder="Snipe kills Dumbledore."></textarea>
+                <small class="help-block pull-right muted"><i class="icon-arrow-up"></i> This part will be hidden.</small>
                 
                 <br/>
                 <label for="visible">Visible Tweet:</label>
-                <textarea id="visible" name="visible" class="field span6"></textarea>
-                <small class="help-block muted">This part be posted to Twitter.</small>
+                <textarea id="visible" name="visible" class="field span6" placeholder="Totally did not expect this. #HarryPotter #Spoiler"></textarea>
+                <small class="help-block pull-right muted"><i class="icon-arrow-up"></i> This part be posted to Twitter.</small>
 
                 <br/>
                 <button type="submitt" class="btn btn-large btn-inverse"><i class="icon-twitter"></i> Tweet</button>
