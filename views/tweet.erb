@@ -1,0 +1,39 @@
+<div class="row">
+
+    <div class="span6 well well-large">
+
+        <h3>New Spoiler Tweet</h3>
+
+        <form method="post">
+            <fieldset>
+                <label for="spoiler">Hidden Spoiler:</label>
+                <textarea id="spoiler" name="spoiler" rows="4" class="field span6"></textarea>
+                <small class="help-block muted">This part will be hidden.</small>
+                
+                <br/>
+                <label for="visible">Visible Tweet:</label>
+                <textarea id="visible" name="visible" class="field span6"></textarea>
+                <small class="help-block muted">This part be posted to Twitter.</small>
+
+                <br/>
+                <button type="submitt" class="btn btn-large btn-inverse"><i class="icon-twitter"></i> Tweet</button>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class='span3 well well-large'>
+        <h3>User Information</h3>
+
+        <img class="img-polaroid pull-left user-pic" src="<%=@picture%>"/>
+        
+        <div>
+            <strong><%=@name%></strong><br/>
+            <a href="https://twitter.com/<%=@user%>">@<%=@user%></a>
+        </div>
+
+        <br/><br/>
+        <a class="btn btn-small btn-inverse pull-right" href="/logout">Log Out</a>
+    </div>
+
+
+</div>
