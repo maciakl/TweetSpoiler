@@ -6,16 +6,21 @@ Sinatra app planned for Heroku platform. Not much here yet.
 Prerequistes
 ------------
 
-Install using bundler:
+To build on Ubuntu you need the following dependencies:
+
+    sudo aptitude install libsqlite3-dev
+    sudo aptitude install liboq-dev
+
+Once those are on the system install all the required gems using bundler:
 
     bundle install
 
-Also, get Heroku toolkit.
+Also, get [Heroku Toolbelt][to].
 
 Development
 -----------
 
-Install heroku config plugin:
+Install heroku config plugin using the heroku toolbelt:
 
     heroku plugins:install git://github.com/ddollar/heroku-config.git
 
@@ -42,3 +47,6 @@ To deploy:
 
     git push
     git push heroku master
+
+
+[to]: https://toolbelt.heroku.com/
