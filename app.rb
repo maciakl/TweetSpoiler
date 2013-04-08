@@ -183,9 +183,9 @@ end
 
 get '/:id' do
 
-    id = params[:id]
+    @id = params[:id]
 
-    spoiler = Spoiler.get(id)
+    spoiler = Spoiler.get(@id)
 
     @created_at = spoiler.created_at #strtftime("%m/%d/%Y %l:%M %p")
     @for = spoiler.for
