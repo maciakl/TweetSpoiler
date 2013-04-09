@@ -92,7 +92,7 @@ To deploy:
 TODO
 ----
 
-* ~Better Readme~
+* ~~Better Readme~~
 * Ability to edit spoilers you created
 * Ability to delete spoilers you created
 * Admin panel of some sort
