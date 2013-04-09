@@ -4,17 +4,23 @@
 
         <h3>New Spoiler Tweet</h3>
 
-        <form method="post">
+        <form method="post" id="spoilerform">
             <fieldset>
-                <label for="for">This is a spoiler for:</label>
+                <label for="for"><i class="icon-tag"></i> This is a spoiler for:</label>
                 <input type="text" id="for" name="for" placeholder="Harry Potter"/>
-                <label for="spoiler">Hidden Spoiler:</label>
-                <textarea id="spoiler" name="spoiler" rows="4" class="field span6" placeholder="Snipe kills Dumbledore."></textarea>
+                <div class="help-block alert" id="foralert"> <strong>Warning!</strong> Source field cannot be empty.</div>
+
+                <label for="spoiler"><i class="icon-unlock"></i> Hidden Spoiler:</label>
+                <textarea id="spoiler" name="spoiler" rows="4" class="field span6" maxlength="500"
+                    placeholder="Snipe kills Dumbledore."></textarea>
+                <div class="help-block alert" id="spoileralert"> <strong>Warning!</strong> Spoiler field cannot be empty.</div>
                 <small class="help-block pull-right muted"><i class="icon-arrow-up"></i> This part will be hidden.</small>
                 
                 <br/>
-                <label for="visible">Visible Tweet:</label>
-                <textarea id="visible" name="visible" class="field span6" placeholder="Totally did not expect this. #HarryPotter #Spoiler"></textarea>
+                <label for="visible"><i class="icon-twitter-sign"></i> Visible Tweet:</label>
+                <textarea id="tweet" name="tweet" class="field span6" maxlength="100" 
+                    placeholder="Totally did not expect this. #HarryPotter #Spoiler"></textarea>
+                <div class="help-block alert" id="tweetalert"> <strong>Warning!</strong> Tweet field cannot be empty.</div>
                 <small class="help-block pull-right muted"><i class="icon-arrow-up"></i> This part be posted to Twitter.</small>
 
                 <br/>
@@ -34,8 +40,8 @@
         </div>
 
         <br/><br/>
-        <a class="btn btn-small btn-inverse pull-right" href="/logout">Log Out</a>
+        <a class="btn btn-small btn-inverse pull-right" href="/logout"><i class="icon-off"></i> Log Out</a>
     </div>
 
-
 </div>
+

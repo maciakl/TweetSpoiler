@@ -166,8 +166,23 @@ post '/tweet' do
     rescue DataMapper::SaveFailureError => e
         puts e.resource.errors.inspect
     end
+    
 
+
+    # Grab insertion ID 
     id = spoiler.id
+
+    # Create a twitter client using the current access token
+    access_token = session[:access_token]
+
+    client = Twitter::Client.new(
+                    :oauth_token => access_token.token,
+                    :oauth_token_secret => access_token.secret)
+
+    url = ' http://dontspoil.us/'+id.to_s
+
+    client.update(params[:tweet] + url)
+
     redirect '/'+id.to_s
     
 end
@@ -180,14 +195,30 @@ get '/logout' do
     redirect '/'
 end
 
+get '/about' do
+    erb :about
+end
+
+get '/privacy' do
+    erb :privacy
+end
+
+get '/error' do
+    erb :e404
+end
+
 
 get '/:id' do
+
+    # Display a stored spoiler
 
     @id = params[:id]
 
     spoiler = Spoiler.get(@id)
 
-    @created_at = spoiler.created_at #strtftime("%m/%d/%Y %l:%M %p")
+    redirect '/error' if spoiler == nil
+
+    @created = spoiler.created_at.strftime("%B %d, %Y at %l:%M %P")
     @for = spoiler.for
     @spoiler = spoiler.spoiler
     @username = spoiler.user_username

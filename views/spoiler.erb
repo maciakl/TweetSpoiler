@@ -9,13 +9,22 @@
 
     <div class="span6 well well-large">
         <h3>Spoiler for <%=@for%></h3>
+        <hr/>
 
         <p class="lead spoiler">
-            <%=@spoiler%>
+            <i class="icon-quote-left"></i>
+        
+                <em>
+                    <%=@spoiler%>
+                </em>
+
+            <i class="icon-quote-right"></i>
+
         </p>
 
+        <hr/>
         <p>
-            <small class="muted">Created at: <%=@created_at%>.</small>
+            <small class="muted">Created on <%=@created%>.</small>
         </p>
     </div>
 

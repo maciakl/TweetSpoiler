@@ -23,6 +23,17 @@
         margin-right: 15px;
     }
 
+    header h1 a,
+    header h1 a:hover,
+    header h1 a:visited {
+        color: black;
+        text-decoration: none;
+    }
+
+    .alert {
+        display: none;
+    }
+
     </style>
 
     <link href="components/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
@@ -50,13 +61,21 @@
       <div class="container">
 
         <header class="page-header">
-            <h1>Don't Spoil Us <small>Hide Spoilers in your tweets</small></h1>
+            <h1><a href="/">Don't Spoil Us</a> <small>Hide Spoilers in your tweets</small></h1>
         </header>
         
         <%= yield %>
 
+
+      <hr/>
+
       <footer>
-        <p>&copy; Luke Maciak 2013</p>
+      <div class="nav nav-pills">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+      </ul>
+          <span class="pull-right">&copy; Luke Maciak 2013</span>
       </footer>
 
     </div> <!-- /container -->
@@ -66,6 +85,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="components/jquery/jquery.min.js"></script>
     <script src="components/bootstrap/js/bootstrap.min.js"></script>
+    <script src="validate.js"></script>
     
     <!-- Add your custom scripts here -->
     <script>
