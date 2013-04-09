@@ -71,6 +71,7 @@ configure do
     # Modify the table schema in a safe way 
     # use auto_migrate! to drop and rebuild tables if needed
     DataMapper.auto_upgrade!
+    DataMapper.auto_migrate!
 
     # By default DataMapper fails silently. Methods that save return false
     # This setting overrides this behavior rising an error instead
