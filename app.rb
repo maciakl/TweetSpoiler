@@ -1,3 +1,7 @@
+# dontspoil.us (c) Luke Maciak 2013
+# GPL v3.0
+# ===
+
 require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
@@ -124,7 +128,9 @@ get '/tweet' do
     access_token = session[:access_token]
 
     # Check if user is logged in. If not we query Twitter for
-    # his username and information and then cache it if needed
+    # his username and information and then cache it if needed.
+    # Generally you always want to use cached info because otherwise
+    # you will hit the Twitter rate limits really fast.
     if session[:username] == nil
 
         client = Twitter::Client.new(
@@ -161,6 +167,9 @@ post '/tweet' do
     spoiler.created_at = Time.now
     spoiler.spoiler = params[:spoiler]
     
+    # This is for debugging. By default the error risen by
+    # DataMapper upon failed save is very generic. This is the
+    # only way to actually see what happens inside
     begin
         spoiler.save
     rescue DataMapper::SaveFailureError => e
@@ -179,10 +188,14 @@ post '/tweet' do
                     :oauth_token => access_token.token,
                     :oauth_token_secret => access_token.secret)
 
+    # create URL based on the insertion value
+    # note that we are skipping the www to shorten it (it works)
     url = ' http://dontspoil.us/'+id.to_s
 
+    # post message + URL to twitter as current user
     client.update(params[:tweet] + url)
 
+    # shoot user over to the display page to see the spoiler they just created
     redirect '/'+id.to_s
     
 end
@@ -203,11 +216,12 @@ get '/privacy' do
     erb :privacy
 end
 
+# Fake 404 route - better than nothing
 get '/error' do
     erb :e404
 end
 
-
+# TODO: pattern match only numerical url's
 get '/:id' do
 
     # Display a stored spoiler
@@ -215,7 +229,13 @@ get '/:id' do
     @id = params[:id]
 
     spoiler = Spoiler.get(@id)
-
+    
+    # Poor man's 404 implementation. Technically I should be using the built in
+    # Sinatra not_found route but since I want shortest url's possible to fit
+    # in Twitter char limit I have a root level wildcard route here. This means
+    # it matches just about everything and there is no way for me to tell if
+    # a given url exists or not before I do a database lookup on ID. So we
+    # check and redirect
     redirect '/error' if spoiler == nil
 
     @created = spoiler.created_at.strftime("%B %d, %Y at %l:%M %P")

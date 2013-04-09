@@ -49,4 +49,12 @@ To deploy:
     git push heroku master
 
 
+TODO
+----
+
+* Better Readme
+* Ability to edit spoilers you created
+* Ability to delete spoilers you created
+* Admin panel of some sort
+
 [to]: https://toolbelt.heroku.com/
