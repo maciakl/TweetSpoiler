@@ -241,13 +241,22 @@ get '/:id' do
 
     @created = spoiler.created_at.strftime("%B %d, %Y at %l:%M %P")
     @for = spoiler.for
-    @spoiler = spoiler.spoiler
     @username = spoiler.user_username
 
     user = User.get(@username)
     
     @name = user.name
     @picture = user.pic
+
+    spoiler_text = spoiler.spoiler
+
+    @spoiler = spoiler_text.gsub( %r{http://[^\s<]+} ) do |url|
+        if url[/(?:png|jpe?g|gif|svg)$/]
+            "<img src='#{url}'/>"
+        else
+            "<a href='#{url}'>#{url}</a>"
+        end
+    end
 
     erb :spoiler
 end
