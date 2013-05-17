@@ -1,9 +1,13 @@
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:site" content="@LukeMaciak">
 <meta name="twitter:creator" content="@<%=@username%>"/>
 <meta name="twitter:url" content="http://dontspoil.us/<%=@id%>"/>
 <meta name="twitter:title" content="Spoiler for <%=@for%>"/>
-<meta name="twitter:description" content="<%=@spoiler%>"/>
+<meta name="twitter:description" content="<%=h@spoiler_text%>"/>
+<% if @img_url %>
+<meta name="twitter:image" content="<%=@img_url%>">
+<% end %>
 
 <div class="row">
 

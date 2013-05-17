@@ -79,6 +79,12 @@ configure do
     DataMapper::Model.raise_on_save_failure = true
 end
 
+helpers do  
+    include Rack::Utils  
+    alias_method :h, :escape_html  
+end  
+
+
 before do
     # Create OAuth consumer using the default Twitter URL's
     @oauth = OAuth::Consumer.new(
@@ -248,9 +254,10 @@ get '/:id' do
     @name = user.name
     @picture = user.pic
 
-    spoiler_text = spoiler.spoiler
+    @spoiler_text = spoiler.spoiler
+    @img_url = @spoiler_text[/\Ahttps?:\/\/.+\.(?:png|jpe?g|gif|svg)$/]
 
-    @spoiler = spoiler_text.gsub( %r{http://[^\s<]+} ) do |url|
+    @spoiler = @spoiler_text.gsub( %r{http://[^\s<]+} ) do |url|
         if url[/(?:png|jpe?g|gif|svg)$/]
             "<img src='#{url}'/>"
         else
