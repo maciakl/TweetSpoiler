@@ -27,7 +27,7 @@ Building
 To build on Ubuntu you need the following dependencies in addition to Ruby and Gems:
 
     sudo aptitude install libsqlite3-dev
-    sudo aptitude install liboq-dev
+    sudo aptitude install libpq-dev
 
 On windows you will need to download SQLite and extract the `sqlite3.dll` into 
 your Ruby `bin` directory. On most systems this will be something like:

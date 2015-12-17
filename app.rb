@@ -15,6 +15,10 @@ require 'data_mapper'
 # them after you close it.
 $stdout.sync = true
 
+# Because Oauth with Twitter looks like session Hijacking to Rack this
+# needs to happem :(
+set :protection, except: :session_hijacking
+
 # Read the configuration from the heroku environment
 # Locally these should be defined in an .env file
 # You can initially pull it by using:
