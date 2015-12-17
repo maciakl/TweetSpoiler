@@ -99,4 +99,4 @@ DEPENDENCIES
   oauth
   pg
   sinatra
-  twitter
+  twitter (= 4.6.2)
