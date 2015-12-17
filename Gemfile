@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.1.8"
+ruby "1.9.3"
 gem 'sinatra'
 gem 'oauth'
 gem 'twitter'
