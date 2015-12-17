@@ -156,7 +156,9 @@ get '/tweet' do
         # will create a new record. If he exists, it will update his record
         # with the new name and picture
         current_user = User.first_or_create({:username => tusername},
-                                            {:name => tname, :pic => tpic}).update(:name => tname, :pic => tpic)
+                                            {:name => tname, :pic => tpic})
+
+        current_user.update(:name => tname, :pic => tpic)
         session[:username] = tusername
     else
         current_user = User.get(session[:username])
